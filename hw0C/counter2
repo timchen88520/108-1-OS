@@ -1,0 +1,413 @@
+
+peterson_trival-g:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000001000 <_init>:
+    1000:	48 83 ec 08          	sub    $0x8,%rsp
+    1004:	48 8b 05 dd 2f 00 00 	mov    0x2fdd(%rip),%rax        # 3fe8 <__gmon_start__>
+    100b:	48 85 c0             	test   %rax,%rax
+    100e:	74 02                	je     1012 <_init+0x12>
+    1010:	ff d0                	callq  *%rax
+    1012:	48 83 c4 08          	add    $0x8,%rsp
+    1016:	c3                   	retq   
+
+Disassembly of section .plt:
+
+0000000000001020 <.plt>:
+    1020:	ff 35 5a 2f 00 00    	pushq  0x2f5a(%rip)        # 3f80 <_GLOBAL_OFFSET_TABLE_+0x8>
+    1026:	ff 25 5c 2f 00 00    	jmpq   *0x2f5c(%rip)        # 3f88 <_GLOBAL_OFFSET_TABLE_+0x10>
+    102c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000001030 <pthread_create@plt>:
+    1030:	ff 25 5a 2f 00 00    	jmpq   *0x2f5a(%rip)        # 3f90 <pthread_create@GLIBC_2.2.5>
+    1036:	68 00 00 00 00       	pushq  $0x0
+    103b:	e9 e0 ff ff ff       	jmpq   1020 <.plt>
+
+0000000000001040 <puts@plt>:
+    1040:	ff 25 52 2f 00 00    	jmpq   *0x2f52(%rip)        # 3f98 <puts@GLIBC_2.2.5>
+    1046:	68 01 00 00 00       	pushq  $0x1
+    104b:	e9 d0 ff ff ff       	jmpq   1020 <.plt>
+
+0000000000001050 <__stack_chk_fail@plt>:
+    1050:	ff 25 4a 2f 00 00    	jmpq   *0x2f4a(%rip)        # 3fa0 <__stack_chk_fail@GLIBC_2.4>
+    1056:	68 02 00 00 00       	pushq  $0x2
+    105b:	e9 c0 ff ff ff       	jmpq   1020 <.plt>
+
+0000000000001060 <printf@plt>:
+    1060:	ff 25 42 2f 00 00    	jmpq   *0x2f42(%rip)        # 3fa8 <printf@GLIBC_2.2.5>
+    1066:	68 03 00 00 00       	pushq  $0x3
+    106b:	e9 b0 ff ff ff       	jmpq   1020 <.plt>
+
+0000000000001070 <alarm@plt>:
+    1070:	ff 25 3a 2f 00 00    	jmpq   *0x2f3a(%rip)        # 3fb0 <alarm@GLIBC_2.2.5>
+    1076:	68 04 00 00 00       	pushq  $0x4
+    107b:	e9 a0 ff ff ff       	jmpq   1020 <.plt>
+
+0000000000001080 <signal@plt>:
+    1080:	ff 25 32 2f 00 00    	jmpq   *0x2f32(%rip)        # 3fb8 <signal@GLIBC_2.2.5>
+    1086:	68 05 00 00 00       	pushq  $0x5
+    108b:	e9 90 ff ff ff       	jmpq   1020 <.plt>
+
+0000000000001090 <pthread_join@plt>:
+    1090:	ff 25 2a 2f 00 00    	jmpq   *0x2f2a(%rip)        # 3fc0 <pthread_join@GLIBC_2.2.5>
+    1096:	68 06 00 00 00       	pushq  $0x6
+    109b:	e9 80 ff ff ff       	jmpq   1020 <.plt>
+
+00000000000010a0 <sched_getcpu@plt>:
+    10a0:	ff 25 22 2f 00 00    	jmpq   *0x2f22(%rip)        # 3fc8 <sched_getcpu@GLIBC_2.6>
+    10a6:	68 07 00 00 00       	pushq  $0x7
+    10ab:	e9 70 ff ff ff       	jmpq   1020 <.plt>
+
+00000000000010b0 <fwrite@plt>:
+    10b0:	ff 25 1a 2f 00 00    	jmpq   *0x2f1a(%rip)        # 3fd0 <fwrite@GLIBC_2.2.5>
+    10b6:	68 08 00 00 00       	pushq  $0x8
+    10bb:	e9 60 ff ff ff       	jmpq   1020 <.plt>
+
+Disassembly of section .plt.got:
+
+00000000000010c0 <__cxa_finalize@plt>:
+    10c0:	ff 25 32 2f 00 00    	jmpq   *0x2f32(%rip)        # 3ff8 <__cxa_finalize@GLIBC_2.2.5>
+    10c6:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .text:
+
+00000000000010d0 <_start>:
+    10d0:	31 ed                	xor    %ebp,%ebp
+    10d2:	49 89 d1             	mov    %rdx,%r9
+    10d5:	5e                   	pop    %rsi
+    10d6:	48 89 e2             	mov    %rsp,%rdx
+    10d9:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    10dd:	50                   	push   %rax
+    10de:	54                   	push   %rsp
+    10df:	4c 8d 05 aa 03 00 00 	lea    0x3aa(%rip),%r8        # 1490 <__libc_csu_fini>
+    10e6:	48 8d 0d 43 03 00 00 	lea    0x343(%rip),%rcx        # 1430 <__libc_csu_init>
+    10ed:	48 8d 3d 84 02 00 00 	lea    0x284(%rip),%rdi        # 1378 <main>
+    10f4:	ff 15 e6 2e 00 00    	callq  *0x2ee6(%rip)        # 3fe0 <__libc_start_main@GLIBC_2.2.5>
+    10fa:	f4                   	hlt    
+    10fb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000001100 <deregister_tm_clones>:
+    1100:	48 8d 3d 19 2f 00 00 	lea    0x2f19(%rip),%rdi        # 4020 <stderr@@GLIBC_2.2.5>
+    1107:	48 8d 05 12 2f 00 00 	lea    0x2f12(%rip),%rax        # 4020 <stderr@@GLIBC_2.2.5>
+    110e:	48 39 f8             	cmp    %rdi,%rax
+    1111:	74 15                	je     1128 <deregister_tm_clones+0x28>
+    1113:	48 8b 05 be 2e 00 00 	mov    0x2ebe(%rip),%rax        # 3fd8 <_ITM_deregisterTMCloneTable>
+    111a:	48 85 c0             	test   %rax,%rax
+    111d:	74 09                	je     1128 <deregister_tm_clones+0x28>
+    111f:	ff e0                	jmpq   *%rax
+    1121:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1128:	c3                   	retq   
+    1129:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001130 <register_tm_clones>:
+    1130:	48 8d 3d e9 2e 00 00 	lea    0x2ee9(%rip),%rdi        # 4020 <stderr@@GLIBC_2.2.5>
+    1137:	48 8d 35 e2 2e 00 00 	lea    0x2ee2(%rip),%rsi        # 4020 <stderr@@GLIBC_2.2.5>
+    113e:	48 29 fe             	sub    %rdi,%rsi
+    1141:	48 89 f0             	mov    %rsi,%rax
+    1144:	48 c1 ee 3f          	shr    $0x3f,%rsi
+    1148:	48 c1 f8 03          	sar    $0x3,%rax
+    114c:	48 01 c6             	add    %rax,%rsi
+    114f:	48 d1 fe             	sar    %rsi
+    1152:	74 14                	je     1168 <register_tm_clones+0x38>
+    1154:	48 8b 05 95 2e 00 00 	mov    0x2e95(%rip),%rax        # 3ff0 <_ITM_registerTMCloneTable>
+    115b:	48 85 c0             	test   %rax,%rax
+    115e:	74 08                	je     1168 <register_tm_clones+0x38>
+    1160:	ff e0                	jmpq   *%rax
+    1162:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1168:	c3                   	retq   
+    1169:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001170 <__do_global_dtors_aux>:
+    1170:	80 3d b1 2e 00 00 00 	cmpb   $0x0,0x2eb1(%rip)        # 4028 <completed.7983>
+    1177:	75 2f                	jne    11a8 <__do_global_dtors_aux+0x38>
+    1179:	55                   	push   %rbp
+    117a:	48 83 3d 76 2e 00 00 	cmpq   $0x0,0x2e76(%rip)        # 3ff8 <__cxa_finalize@GLIBC_2.2.5>
+    1181:	00 
+    1182:	48 89 e5             	mov    %rsp,%rbp
+    1185:	74 0c                	je     1193 <__do_global_dtors_aux+0x23>
+    1187:	48 8b 3d 7a 2e 00 00 	mov    0x2e7a(%rip),%rdi        # 4008 <__dso_handle>
+    118e:	e8 2d ff ff ff       	callq  10c0 <__cxa_finalize@plt>
+    1193:	e8 68 ff ff ff       	callq  1100 <deregister_tm_clones>
+    1198:	c6 05 89 2e 00 00 01 	movb   $0x1,0x2e89(%rip)        # 4028 <completed.7983>
+    119f:	5d                   	pop    %rbp
+    11a0:	c3                   	retq   
+    11a1:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    11a8:	c3                   	retq   
+    11a9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+00000000000011b0 <frame_dummy>:
+    11b0:	e9 7b ff ff ff       	jmpq   1130 <register_tm_clones>
+
+00000000000011b5 <per_second>:
+//統計每一個thread進入CS的次數
+int p1_in_cs = 0;
+int p0_in_cs =0;
+
+//每秒鐘印出P0和P1進入CS的次數
+void per_second(int signum) {
+    11b5:	55                   	push   %rbp
+    11b6:	48 89 e5             	mov    %rsp,%rbp
+    11b9:	48 83 ec 10          	sub    $0x10,%rsp
+    11bd:	89 7d fc             	mov    %edi,-0x4(%rbp)
+	printf("進入次數（每秒）p0: %5d, p1: %5d", p0_in_cs, p1_in_cs);
+    11c0:	8b 15 76 2e 00 00    	mov    0x2e76(%rip),%edx        # 403c <p1_in_cs>
+    11c6:	8b 05 74 2e 00 00    	mov    0x2e74(%rip),%eax        # 4040 <p0_in_cs>
+    11cc:	89 c6                	mov    %eax,%esi
+    11ce:	48 8d 3d 33 0e 00 00 	lea    0xe33(%rip),%rdi        # 2008 <_IO_stdin_used+0x8>
+    11d5:	b8 00 00 00 00       	mov    $0x0,%eax
+    11da:	e8 81 fe ff ff       	callq  1060 <printf@plt>
+	printf("，分別執行於 core#%d 及 core#%d\n", cpu_p0, cpu_p1);   
+    11df:	8b 15 63 2e 00 00    	mov    0x2e63(%rip),%edx        # 4048 <cpu_p1>
+    11e5:	8b 05 59 2e 00 00    	mov    0x2e59(%rip),%eax        # 4044 <cpu_p0>
+    11eb:	89 c6                	mov    %eax,%esi
+    11ed:	48 8d 3d 44 0e 00 00 	lea    0xe44(%rip),%rdi        # 2038 <_IO_stdin_used+0x38>
+    11f4:	b8 00 00 00 00       	mov    $0x0,%eax
+    11f9:	e8 62 fe ff ff       	callq  1060 <printf@plt>
+	p0_in_cs = 0;
+    11fe:	c7 05 38 2e 00 00 00 	movl   $0x0,0x2e38(%rip)        # 4040 <p0_in_cs>
+    1205:	00 00 00 
+	p1_in_cs = 0;
+    1208:	c7 05 2a 2e 00 00 00 	movl   $0x0,0x2e2a(%rip)        # 403c <p1_in_cs>
+    120f:	00 00 00 
+	alarm(1);
+    1212:	bf 01 00 00 00       	mov    $0x1,%edi
+    1217:	e8 54 fe ff ff       	callq  1070 <alarm@plt>
+}
+    121c:	90                   	nop
+    121d:	c9                   	leaveq 
+    121e:	c3                   	retq   
+
+000000000000121f <p0>:
+
+void p0(void) {
+    121f:	55                   	push   %rbp
+    1220:	48 89 e5             	mov    %rsp,%rbp
+	printf("p0: start\n");
+    1223:	48 8d 3d 36 0e 00 00 	lea    0xe36(%rip),%rdi        # 2060 <_IO_stdin_used+0x60>
+    122a:	e8 11 fe ff ff       	callq  1040 <puts@plt>
+	while (1) {
+		//🐉 🐲 🌵 🎄 🌲 🌳 🌴 🌱 🌿 ☘️ 🍀
+		//Peteron's solution的進去部分的程式碼
+		flag0 = 1;
+    122f:	c7 05 fb 2d 00 00 01 	movl   $0x1,0x2dfb(%rip)        # 4034 <flag0>
+    1236:	00 00 00 
+		turn = 1;
+    1239:	c7 05 e9 2d 00 00 01 	movl   $0x1,0x2de9(%rip)        # 402c <turn>
+    1240:	00 00 00 
+		while (flag1==1 && turn==1)
+    1243:	90                   	nop
+    1244:	8b 05 e6 2d 00 00    	mov    0x2de6(%rip),%eax        # 4030 <flag1>
+    124a:	83 f8 01             	cmp    $0x1,%eax
+    124d:	75 0b                	jne    125a <p0+0x3b>
+    124f:	8b 05 d7 2d 00 00    	mov    0x2dd7(%rip),%eax        # 402c <turn>
+    1255:	83 f8 01             	cmp    $0x1,%eax
+    1258:	74 ea                	je     1244 <p0+0x25>
+			;   //waiting
+
+
+
+		//底下程式碼用於模擬在critical section
+		cpu_p0 = sched_getcpu();
+    125a:	e8 41 fe ff ff       	callq  10a0 <sched_getcpu@plt>
+    125f:	89 05 df 2d 00 00    	mov    %eax,0x2ddf(%rip)        # 4044 <cpu_p0>
+		in_cs++;	//計算有多少人在CS中
+    1265:	8b 05 cd 2d 00 00    	mov    0x2dcd(%rip),%eax        # 4038 <in_cs>
+    126b:	83 c0 01             	add    $0x1,%eax
+    126e:	89 05 c4 2d 00 00    	mov    %eax,0x2dc4(%rip)        # 4038 <in_cs>
+		//nanosleep(&ts, NULL);	//睡100 nanoseconds
+		if (in_cs == 2) fprintf(stderr, "p0及p1都在critical section\n");
+    1274:	8b 05 be 2d 00 00    	mov    0x2dbe(%rip),%eax        # 4038 <in_cs>
+    127a:	83 f8 02             	cmp    $0x2,%eax
+    127d:	75 20                	jne    129f <p0+0x80>
+    127f:	48 8b 05 9a 2d 00 00 	mov    0x2d9a(%rip),%rax        # 4020 <stderr@@GLIBC_2.2.5>
+    1286:	48 89 c1             	mov    %rax,%rcx
+    1289:	ba 1e 00 00 00       	mov    $0x1e,%edx
+    128e:	be 01 00 00 00       	mov    $0x1,%esi
+    1293:	48 8d 3d d6 0d 00 00 	lea    0xdd6(%rip),%rdi        # 2070 <_IO_stdin_used+0x70>
+    129a:	e8 11 fe ff ff       	callq  10b0 <fwrite@plt>
+		p0_in_cs++;	//P0在CS幾次
+    129f:	8b 05 9b 2d 00 00    	mov    0x2d9b(%rip),%eax        # 4040 <p0_in_cs>
+    12a5:	83 c0 01             	add    $0x1,%eax
+    12a8:	89 05 92 2d 00 00    	mov    %eax,0x2d92(%rip)        # 4040 <p0_in_cs>
+		//nanosleep(&ts, NULL);	//睡100 nanoseconds
+		in_cs--;	//計算有多少人在CS中
+    12ae:	8b 05 84 2d 00 00    	mov    0x2d84(%rip),%eax        # 4038 <in_cs>
+    12b4:	83 e8 01             	sub    $0x1,%eax
+    12b7:	89 05 7b 2d 00 00    	mov    %eax,0x2d7b(%rip)        # 4038 <in_cs>
+
+
+
+		//🐉 🐲 🌵 🎄 🌲 🌳 🌴 🌱 🌿 ☘️ 🍀
+		//Peteron's solution的離開部分的程式碼
+		flag0=0;
+    12bd:	c7 05 6d 2d 00 00 00 	movl   $0x0,0x2d6d(%rip)        # 4034 <flag0>
+    12c4:	00 00 00 
+		flag0 = 1;
+    12c7:	e9 63 ff ff ff       	jmpq   122f <p0+0x10>
+
+00000000000012cc <p1>:
+	}
+}
+
+void p1(void) {
+    12cc:	55                   	push   %rbp
+    12cd:	48 89 e5             	mov    %rsp,%rbp
+	printf("p1: start\n");
+    12d0:	48 8d 3d b8 0d 00 00 	lea    0xdb8(%rip),%rdi        # 208f <_IO_stdin_used+0x8f>
+    12d7:	e8 64 fd ff ff       	callq  1040 <puts@plt>
+	while (1) {
+		flag1 = 1;
+    12dc:	c7 05 4a 2d 00 00 01 	movl   $0x1,0x2d4a(%rip)        # 4030 <flag1>
+    12e3:	00 00 00 
+		turn = 0;
+    12e6:	c7 05 3c 2d 00 00 00 	movl   $0x0,0x2d3c(%rip)        # 402c <turn>
+    12ed:	00 00 00 
+		while (flag0==1 && turn==0)
+    12f0:	90                   	nop
+    12f1:	8b 05 3d 2d 00 00    	mov    0x2d3d(%rip),%eax        # 4034 <flag0>
+    12f7:	83 f8 01             	cmp    $0x1,%eax
+    12fa:	75 0a                	jne    1306 <p1+0x3a>
+    12fc:	8b 05 2a 2d 00 00    	mov    0x2d2a(%rip),%eax        # 402c <turn>
+    1302:	85 c0                	test   %eax,%eax
+    1304:	74 eb                	je     12f1 <p1+0x25>
+			;   //waiting
+		//底下程式碼用於模擬在critical section
+		cpu_p1 = sched_getcpu();
+    1306:	e8 95 fd ff ff       	callq  10a0 <sched_getcpu@plt>
+    130b:	89 05 37 2d 00 00    	mov    %eax,0x2d37(%rip)        # 4048 <cpu_p1>
+		in_cs++;
+    1311:	8b 05 21 2d 00 00    	mov    0x2d21(%rip),%eax        # 4038 <in_cs>
+    1317:	83 c0 01             	add    $0x1,%eax
+    131a:	89 05 18 2d 00 00    	mov    %eax,0x2d18(%rip)        # 4038 <in_cs>
+		//nanosleep(&ts, NULL);
+		if (in_cs == 2) fprintf(stderr, "p0及p1都在critical section\n");
+    1320:	8b 05 12 2d 00 00    	mov    0x2d12(%rip),%eax        # 4038 <in_cs>
+    1326:	83 f8 02             	cmp    $0x2,%eax
+    1329:	75 20                	jne    134b <p1+0x7f>
+    132b:	48 8b 05 ee 2c 00 00 	mov    0x2cee(%rip),%rax        # 4020 <stderr@@GLIBC_2.2.5>
+    1332:	48 89 c1             	mov    %rax,%rcx
+    1335:	ba 1e 00 00 00       	mov    $0x1e,%edx
+    133a:	be 01 00 00 00       	mov    $0x1,%esi
+    133f:	48 8d 3d 2a 0d 00 00 	lea    0xd2a(%rip),%rdi        # 2070 <_IO_stdin_used+0x70>
+    1346:	e8 65 fd ff ff       	callq  10b0 <fwrite@plt>
+		p1_in_cs++;
+    134b:	8b 05 eb 2c 00 00    	mov    0x2ceb(%rip),%eax        # 403c <p1_in_cs>
+    1351:	83 c0 01             	add    $0x1,%eax
+    1354:	89 05 e2 2c 00 00    	mov    %eax,0x2ce2(%rip)        # 403c <p1_in_cs>
+		//nanosleep(&ts, NULL);
+		in_cs--;
+    135a:	8b 05 d8 2c 00 00    	mov    0x2cd8(%rip),%eax        # 4038 <in_cs>
+    1360:	83 e8 01             	sub    $0x1,%eax
+    1363:	89 05 cf 2c 00 00    	mov    %eax,0x2ccf(%rip)        # 4038 <in_cs>
+		//離開critical section
+		flag1=0;
+    1369:	c7 05 bd 2c 00 00 00 	movl   $0x0,0x2cbd(%rip)        # 4030 <flag1>
+    1370:	00 00 00 
+		flag1 = 1;
+    1373:	e9 64 ff ff ff       	jmpq   12dc <p1+0x10>
+
+0000000000001378 <main>:
+	}
+}
+
+int main(void) {
+    1378:	55                   	push   %rbp
+    1379:	48 89 e5             	mov    %rsp,%rbp
+    137c:	48 83 ec 20          	sub    $0x20,%rsp
+    1380:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1387:	00 00 
+    1389:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    138d:	31 c0                	xor    %eax,%eax
+	pthread_t id1, id2;
+	alarm(1);
+    138f:	bf 01 00 00 00       	mov    $0x1,%edi
+    1394:	e8 d7 fc ff ff       	callq  1070 <alarm@plt>
+	signal(SIGALRM, per_second);
+    1399:	48 8d 35 15 fe ff ff 	lea    -0x1eb(%rip),%rsi        # 11b5 <per_second>
+    13a0:	bf 0e 00 00 00       	mov    $0xe,%edi
+    13a5:	e8 d6 fc ff ff       	callq  1080 <signal@plt>
+	pthread_create(&id1,NULL,(void *) p0,NULL);
+    13aa:	48 8d 45 e8          	lea    -0x18(%rbp),%rax
+    13ae:	b9 00 00 00 00       	mov    $0x0,%ecx
+    13b3:	48 8d 15 65 fe ff ff 	lea    -0x19b(%rip),%rdx        # 121f <p0>
+    13ba:	be 00 00 00 00       	mov    $0x0,%esi
+    13bf:	48 89 c7             	mov    %rax,%rdi
+    13c2:	e8 69 fc ff ff       	callq  1030 <pthread_create@plt>
+	pthread_create(&id2,NULL,(void *) p1,NULL);
+    13c7:	48 8d 45 f0          	lea    -0x10(%rbp),%rax
+    13cb:	b9 00 00 00 00       	mov    $0x0,%ecx
+    13d0:	48 8d 15 f5 fe ff ff 	lea    -0x10b(%rip),%rdx        # 12cc <p1>
+    13d7:	be 00 00 00 00       	mov    $0x0,%esi
+    13dc:	48 89 c7             	mov    %rax,%rdi
+    13df:	e8 4c fc ff ff       	callq  1030 <pthread_create@plt>
+	pthread_join(id1,NULL);
+    13e4:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    13e8:	be 00 00 00 00       	mov    $0x0,%esi
+    13ed:	48 89 c7             	mov    %rax,%rdi
+    13f0:	e8 9b fc ff ff       	callq  1090 <pthread_join@plt>
+	pthread_join(id2,NULL);
+    13f5:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    13f9:	be 00 00 00 00       	mov    $0x0,%esi
+    13fe:	48 89 c7             	mov    %rax,%rdi
+    1401:	e8 8a fc ff ff       	callq  1090 <pthread_join@plt>
+	return (0);
+    1406:	b8 00 00 00 00       	mov    $0x0,%eax
+}
+    140b:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    140f:	64 48 33 14 25 28 00 	xor    %fs:0x28,%rdx
+    1416:	00 00 
+    1418:	74 05                	je     141f <main+0xa7>
+    141a:	e8 31 fc ff ff       	callq  1050 <__stack_chk_fail@plt>
+    141f:	c9                   	leaveq 
+    1420:	c3                   	retq   
+    1421:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+    1428:	00 00 00 
+    142b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000001430 <__libc_csu_init>:
+    1430:	41 57                	push   %r15
+    1432:	49 89 d7             	mov    %rdx,%r15
+    1435:	41 56                	push   %r14
+    1437:	49 89 f6             	mov    %rsi,%r14
+    143a:	41 55                	push   %r13
+    143c:	41 89 fd             	mov    %edi,%r13d
+    143f:	41 54                	push   %r12
+    1441:	4c 8d 25 20 29 00 00 	lea    0x2920(%rip),%r12        # 3d68 <__frame_dummy_init_array_entry>
+    1448:	55                   	push   %rbp
+    1449:	48 8d 2d 20 29 00 00 	lea    0x2920(%rip),%rbp        # 3d70 <__init_array_end>
+    1450:	53                   	push   %rbx
+    1451:	4c 29 e5             	sub    %r12,%rbp
+    1454:	48 83 ec 08          	sub    $0x8,%rsp
+    1458:	e8 a3 fb ff ff       	callq  1000 <_init>
+    145d:	48 c1 fd 03          	sar    $0x3,%rbp
+    1461:	74 1b                	je     147e <__libc_csu_init+0x4e>
+    1463:	31 db                	xor    %ebx,%ebx
+    1465:	0f 1f 00             	nopl   (%rax)
+    1468:	4c 89 fa             	mov    %r15,%rdx
+    146b:	4c 89 f6             	mov    %r14,%rsi
+    146e:	44 89 ef             	mov    %r13d,%edi
+    1471:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+    1475:	48 83 c3 01          	add    $0x1,%rbx
+    1479:	48 39 dd             	cmp    %rbx,%rbp
+    147c:	75 ea                	jne    1468 <__libc_csu_init+0x38>
+    147e:	48 83 c4 08          	add    $0x8,%rsp
+    1482:	5b                   	pop    %rbx
+    1483:	5d                   	pop    %rbp
+    1484:	41 5c                	pop    %r12
+    1486:	41 5d                	pop    %r13
+    1488:	41 5e                	pop    %r14
+    148a:	41 5f                	pop    %r15
+    148c:	c3                   	retq   
+    148d:	0f 1f 00             	nopl   (%rax)
+
+0000000000001490 <__libc_csu_fini>:
+    1490:	c3                   	retq   
+
+Disassembly of section .fini:
+
+0000000000001494 <_fini>:
+    1494:	48 83 ec 08          	sub    $0x8,%rsp
+    1498:	48 83 c4 08          	add    $0x8,%rsp
+    149c:	c3                   	retq   
